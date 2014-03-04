@@ -1,13 +1,13 @@
 //
-//  ViewController.h
+//  PassbookLayout.m
 //  Passbooks
 //
 //  Created by Jose Luis Canepa on 3/3/14.
 //  Copyright (c) 2014 Jose Luis Canepa. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PassbookLayout.h"
 
-@interface ViewController : UICollectionViewController
+@implementation PassbookLayout
 
 @end

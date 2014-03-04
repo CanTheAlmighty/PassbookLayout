@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PassCell.h
 //  Passbooks
 //
 //  Created by Jose Luis Canepa on 3/3/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UICollectionViewController
+@interface PassCell : UICollectionViewCell
 
 @end
