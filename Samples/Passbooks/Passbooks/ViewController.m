@@ -35,17 +35,24 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 200;
+    return 50;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"pass" forIndexPath:indexPath];
+    PassCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"pass" forIndexPath:indexPath];
     
-    cell.backgroundColor = indexPath.item % 2 ? [UIColor colorWithRed:0.0 green:0.7 blue:0.0 alpha:1.0] : [UIColor colorWithRed:0.0 green:0.0 blue:0.7 alpha:1.0] ;
+    cell.backgroundColor = indexPath.item % 2 ? [UIColor colorWithRed:0.0 green:0.7 blue:0.0 alpha:0.5] : [UIColor colorWithRed:0.0 green:0.0 blue:0.7 alpha:0.5] ;
     
     return cell;
 }
+
+#pragma mark - UIScrollView delegate
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    [[(UICollectionView*)scrollView collectionViewLayout] invalidateLayout];
+//}
 
 #pragma mark - Miscellaneous
 
