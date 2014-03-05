@@ -38,3 +38,4 @@ The original version is currently in use in the "Passport" feature [Skout](http:
 ## Version History
 * **v1.0.0** The passbook layout supports selection, stacking on top, bottom.
 * **v1.0.1** Fixed an issue where the unselected cells were positioned wrongly on offsets bigger than zero.
+* **v1.0.2** Forgot to remove some NSLogs.
