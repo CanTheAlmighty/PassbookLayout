@@ -47,6 +47,11 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.collectionView performBatchUpdates:nil completion:nil];
+}
+
 #pragma mark - UIScrollView delegate
 
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView

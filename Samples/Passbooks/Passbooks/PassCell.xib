@@ -8,18 +8,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pass" id="mHG-LX-szQ" customClass="PassCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvU-0g-Rac" userLabel="Container">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass-mockup-ive.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pgs-Xl-j0e">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Free Pass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgI-EW-Ety">
@@ -43,7 +43,7 @@
                             <constraint firstAttribute="trailing" secondItem="Pgs-Xl-j0e" secondAttribute="trailing" id="KiQ-17-I4Y"/>
                             <constraint firstAttribute="bottom" secondItem="Pgs-Xl-j0e" secondAttribute="bottom" id="YbD-Hl-Rp9"/>
                             <constraint firstItem="Pgs-Xl-j0e" firstAttribute="leading" secondItem="XvU-0g-Rac" secondAttribute="leading" id="bYz-wq-LjY"/>
-                            <constraint firstAttribute="height" constant="548" id="dHK-P5-XUW"/>
+                            <constraint firstAttribute="height" constant="420" id="dHK-P5-XUW"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -64,6 +64,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="pass-mockup-ive.png" width="320" height="548"/>
+        <image name="pass-mockup-ive.png" width="320" height="420"/>
     </resources>
 </document>

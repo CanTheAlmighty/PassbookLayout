@@ -24,6 +24,12 @@ typedef struct
     
     /// Collapsed is when
     struct PassMetrics collapsed;
+    
+    /// The size of the bottom stack when a pass is selected and all others are stacked at bottom
+    CGFloat bottomStackedTotalHeight;
+    
+    /// The visible size of each cell in the bottom stack
+    CGFloat bottomStackedHeight;
 }PassbookLayoutMetrics;
 
 typedef struct

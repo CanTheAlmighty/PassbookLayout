@@ -41,10 +41,13 @@
     PassbookLayoutMetrics m;
     PassbookLayoutEffects e;
     
-    m.normal.size       = CGSizeMake(320.0, 320.0);
+    m.normal.size       = CGSizeMake(320.0, 420.0);
     m.normal.overlap    = 0.0;
     m.collapsed.size    = CGSizeMake(320.0, 96.0);
     m.collapsed.overlap = 32.0;
+    
+    m.bottomStackedHeight = 8.0;
+    m.bottomStackedTotalHeight = 64.0;
     
     e.inheritance       = 0.10;
     e.sticksTop         = YES;
@@ -72,14 +75,30 @@
 {
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
-    attributes.frame  = frameForPassAtIndex(indexPath, self.collectionView.bounds, _metrics, _effects);
-    attributes.zIndex = zIndexForPassAtIndex(indexPath);
+    NSArray *selectedIndexPaths = [self.collectionView indexPathsForSelectedItems];
     
+    if (selectedIndexPaths.count && [(NSIndexPath*)selectedIndexPaths[0] isEqual:indexPath])
+    {
+        attributes.frame  = frameForSelectedPass(self.collectionView.bounds, _metrics);
+    }
+    else if (selectedIndexPaths.count)
+    {
+        attributes.frame  = frameForUnselectedPass(indexPath, self.collectionView.bounds, _metrics);
+    }
+    else
+    {
+        BOOL isLast = (indexPath.item == [self.collectionView numberOfItemsInSection:indexPath.section]);
+        attributes.frame  = frameForPassAtIndex(indexPath, isLast, self.collectionView.bounds, _metrics, _effects);
+    }
+    
+    attributes.zIndex = zIndexForPassAtIndex(indexPath);
+        
     return attributes;
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
+    // WIP : Returns all cells (inneficient) in the meantime. Just for testing
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[self.collectionView numberOfItemsInSection:0]];
     
     for (NSInteger i=0; i < [self.collectionView numberOfItemsInSection:0]; i++)
@@ -92,6 +111,7 @@
 
 - (CGSize)collectionViewContentSize
 {
+    // WIP : Fixed value in the meantime
     return CGSizeMake(self.collectionView.bounds.size.width, 1000.0);
 }
 
@@ -104,7 +124,8 @@
 
 #pragma mark Cell positioning
 
-CGRect frameForPassAtIndex(NSIndexPath *indexPath, CGRect b, PassbookLayoutMetrics m, PassbookLayoutEffects e)
+/// Normal collapsed cell, with bouncy animations on top
+CGRect frameForPassAtIndex(NSIndexPath *indexPath, BOOL isLastCell, CGRect b, PassbookLayoutMetrics m, PassbookLayoutEffects e)
 {
     CGRect f;
     
@@ -122,8 +143,6 @@ CGRect frameForPassAtIndex(NSIndexPath *indexPath, CGRect b, PassbookLayoutMetri
             // Keep stuck at top
             f.origin.y      = b.origin.y * e.inheritance/2.0;
             f.size.height   = m.collapsed.size.height - b.origin.y * (1 + e.inheritance);
-            
-            NSLog(@"%.2f", f.size.height);
         }
         else
         {
@@ -140,6 +159,36 @@ CGRect frameForPassAtIndex(NSIndexPath *indexPath, CGRect b, PassbookLayoutMetri
             f.origin.y = b.origin.y;
         }
     }
+    
+    // Edge case, if it's the last cell, display in full height, to avoid any issues.
+    if (isLastCell)
+    {
+        f.size = m.normal.size;
+    }
+    
+    return f;
+}
+
+/// Centered cell
+CGRect frameForSelectedPass(CGRect b, PassbookLayoutMetrics m)
+{
+    CGRect f;
+    
+    f.size      = m.normal.size;
+    f.origin.x  =              (b.size.width  - f.size.width ) / 2.0;
+    f.origin.y  = b.origin.y + (b.size.height - f.size.height) / 2.0;
+    
+    return f;
+}
+
+/// Bottom-stack cell
+CGRect frameForUnselectedPass(NSIndexPath *indexPath, CGRect b, PassbookLayoutMetrics m)
+{
+    CGRect f;
+    
+    f.size        = m.collapsed.size;
+    f.origin.x    = (b.size.width - m.normal.size.width) / 2.0;
+    f.origin.y    = b.origin.y + b.size.height - m.bottomStackedTotalHeight + m.bottomStackedHeight*indexPath.item;
     
     return f;
 }
