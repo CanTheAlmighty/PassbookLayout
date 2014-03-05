@@ -47,9 +47,32 @@
     return cell;
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Alternates selection. Deselects all selected cells, and if there's none, it just accepts the selection
+    BOOL shouldSelect = YES;
+    
+    for (NSIndexPath *indexPath in [collectionView indexPathsForSelectedItems])
+    {
+        // Freaking collection views, you need to tell it that the thing got deselected
+        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+        [self collectionView:collectionView didDeselectItemAtIndexPath:indexPath];
+        shouldSelect = NO;
+    }
+    
+    return shouldSelect;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView performBatchUpdates:nil completion:nil];
+    [collectionView setScrollEnabled:YES];
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.collectionView performBatchUpdates:nil completion:nil];
+    [collectionView performBatchUpdates:nil completion:nil];
+    [collectionView setScrollEnabled:NO];
 }
 
 #pragma mark - UIScrollView delegate
