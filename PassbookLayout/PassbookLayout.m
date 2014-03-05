@@ -73,7 +73,7 @@
 
 - (void)prepareLayout
 {
-    
+    // Ain't Nobody Here but Us Chickens
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -84,14 +84,17 @@
     
     if (selectedIndexPaths.count && [(NSIndexPath*)selectedIndexPaths[0] isEqual:indexPath])
     {
+        // Layout selected cell (normal size)
         attributes.frame  = frameForSelectedPass(self.collectionView.bounds, _metrics);
     }
     else if (selectedIndexPaths.count)
     {
+        // Layout unselected cell (bottom-stuck)
         attributes.frame  = frameForUnselectedPass(indexPath, selectedIndexPaths[0], self.collectionView.bounds, _metrics);
     }
     else
     {
+        // Layout collapsed cells (collapsed size)
         BOOL isLast = (indexPath.item == ([self.collectionView numberOfItemsInSection:indexPath.section]-1));
         attributes.frame  = frameForPassAtIndex(indexPath, isLast, self.collectionView.bounds, _metrics, _effects);
     }
@@ -103,10 +106,10 @@
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    // WIP : Returns all cells (inneficient) in the meantime. Just for testing
     NSRange range = rangeForVisibleCells(rect, [self.collectionView numberOfItemsInSection:0] , _metrics);
     
-    NSLog(@"Visible range: %@", NSStringFromRange(range));
+    // Uncomment to see the current range
+    //NSLog(@"Visible range: %@", NSStringFromRange(range));
     
     NSMutableArray *cells = [NSMutableArray arrayWithCapacity:range.length];
     
@@ -120,7 +123,6 @@
 
 - (CGSize)collectionViewContentSize
 {
-    // WIP : Fixed value in the meantime
     return collectionViewSize(self.collectionView.bounds, [self.collectionView numberOfItemsInSection:0], _metrics);
 }
 
@@ -220,8 +222,6 @@ CGRect frameForUnselectedPass(NSIndexPath *indexPath, NSIndexPath *indexPathSele
     f.size        = m.collapsed.size;
     f.origin.x    = (b.size.width - m.normal.size.width) / 2.0;
     f.origin.y    = b.origin.y + b.size.height - m.bottomStackedTotalHeight + m.bottomStackedHeight*(indexPath.item - indexPathSelected.item);
-    
-    NSLog(@"%.2f", f.origin.y);
     
     return f;
 }
