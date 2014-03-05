@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3629217C18C72E8500161E43 /* pass-mockup-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629217618C72E8500161E43 /* pass-mockup-blue.png */; };
+		3629217D18C72E8500161E43 /* pass-mockup-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629217718C72E8500161E43 /* pass-mockup-blue@2x.png */; };
+		3629217E18C72E8500161E43 /* pass-mockup-ive.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629217818C72E8500161E43 /* pass-mockup-ive.png */; };
+		3629217F18C72E8500161E43 /* pass-mockup-ive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629217918C72E8500161E43 /* pass-mockup-ive@2x.png */; };
+		3629218018C72E8500161E43 /* pass-mockup-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629217A18C72E8500161E43 /* pass-mockup-red.png */; };
+		3629218118C72E8500161E43 /* pass-mockup-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629217B18C72E8500161E43 /* pass-mockup-red@2x.png */; };
+		3629218318C72E9800161E43 /* PassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3629218218C72E9800161E43 /* PassCell.xib */; };
 		364AA2F018C55EBD00EC2140 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364AA2EF18C55EBD00EC2140 /* Foundation.framework */; };
 		364AA2F218C55EBD00EC2140 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364AA2F118C55EBD00EC2140 /* CoreGraphics.framework */; };
 		364AA2F418C55EBD00EC2140 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364AA2F318C55EBD00EC2140 /* UIKit.framework */; };
@@ -36,6 +43,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3629217618C72E8500161E43 /* pass-mockup-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pass-mockup-blue.png"; sourceTree = "<group>"; };
+		3629217718C72E8500161E43 /* pass-mockup-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pass-mockup-blue@2x.png"; sourceTree = "<group>"; };
+		3629217818C72E8500161E43 /* pass-mockup-ive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pass-mockup-ive.png"; sourceTree = "<group>"; };
+		3629217918C72E8500161E43 /* pass-mockup-ive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pass-mockup-ive@2x.png"; sourceTree = "<group>"; };
+		3629217A18C72E8500161E43 /* pass-mockup-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pass-mockup-red.png"; sourceTree = "<group>"; };
+		3629217B18C72E8500161E43 /* pass-mockup-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pass-mockup-red@2x.png"; sourceTree = "<group>"; };
+		3629218218C72E9800161E43 /* PassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassCell.xib; sourceTree = "<group>"; };
 		364AA2EC18C55EBD00EC2140 /* Passbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		364AA2EF18C55EBD00EC2140 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		364AA2F118C55EBD00EC2140 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,6 +100,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3629217518C72E8500161E43 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3629217618C72E8500161E43 /* pass-mockup-blue.png */,
+				3629217718C72E8500161E43 /* pass-mockup-blue@2x.png */,
+				3629217818C72E8500161E43 /* pass-mockup-ive.png */,
+				3629217918C72E8500161E43 /* pass-mockup-ive@2x.png */,
+				3629217A18C72E8500161E43 /* pass-mockup-red.png */,
+				3629217B18C72E8500161E43 /* pass-mockup-red@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		364AA2E318C55EBD00EC2140 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +121,7 @@
 				364AA31418C55EBD00EC2140 /* PassbooksTests */,
 				364AA2EE18C55EBD00EC2140 /* Frameworks */,
 				364AA2ED18C55EBD00EC2140 /* Products */,
+				3629217518C72E8500161E43 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +153,7 @@
 				364AA30118C55EBD00EC2140 /* Main.storyboard */,
 				364AA32918C5606600EC2140 /* PassCell.h */,
 				364AA32A18C5606600EC2140 /* PassCell.m */,
+				3629218218C72E9800161E43 /* PassCell.xib */,
 				364AA30418C55EBD00EC2140 /* ViewController.h */,
 				364AA30518C55EBD00EC2140 /* ViewController.m */,
 				364AA30718C55EBD00EC2140 /* Images.xcassets */,
@@ -248,9 +277,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3629217D18C72E8500161E43 /* pass-mockup-blue@2x.png in Resources */,
+				3629218018C72E8500161E43 /* pass-mockup-red.png in Resources */,
 				364AA30818C55EBD00EC2140 /* Images.xcassets in Resources */,
+				3629217F18C72E8500161E43 /* pass-mockup-ive@2x.png in Resources */,
+				3629218318C72E9800161E43 /* PassCell.xib in Resources */,
+				3629218118C72E8500161E43 /* pass-mockup-red@2x.png in Resources */,
+				3629217E18C72E8500161E43 /* pass-mockup-ive.png in Resources */,
 				364AA2FA18C55EBD00EC2140 /* InfoPlist.strings in Resources */,
 				364AA30318C55EBD00EC2140 /* Main.storyboard in Resources */,
+				3629217C18C72E8500161E43 /* pass-mockup-blue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

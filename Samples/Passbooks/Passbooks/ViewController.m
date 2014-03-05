@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad
 {
-    [self.collectionView registerClass:[PassCell class] forCellWithReuseIdentifier:@"pass"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"PassCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"pass"];
 }
 
 #pragma mark (Dis)Appear
@@ -42,7 +42,7 @@
 {
     PassCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"pass" forIndexPath:indexPath];
     
-    cell.backgroundColor = indexPath.item % 2 ? [UIColor colorWithRed:0.0 green:0.7 blue:0.0 alpha:0.5] : [UIColor colorWithRed:0.0 green:0.0 blue:0.7 alpha:0.5] ;
+    [cell setStyle:indexPath.item % PassCellStyleCount];
     
     return cell;
 }

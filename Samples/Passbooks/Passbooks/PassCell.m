@@ -19,4 +19,11 @@
     return self;
 }
 
+- (void)setStyle:(PassCellStyle)style
+{
+    NSString *names[] = {@"pass-mockup-red", @"pass-mockup-blue", @"pass-mockup-ive"};
+    
+    _imageView.image = [UIImage imageNamed:names[style]];
+}
+
 @end

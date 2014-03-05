@@ -24,19 +24,24 @@ typedef struct
     
     /// Collapsed is when
     struct PassMetrics collapsed;
-    
-    /// How much of the pulling is translated into movement on the top. An inheritance of 0 disables this feature
+}PassbookLayoutMetrics;
+
+typedef struct
+{
+    /// How much of the pulling is translated into movement on the top. An inheritance of 0 disables this feature (same as bouncesTop)
     CGFloat inheritance;
     
+    /// Allows for bouncing when reaching the top
     BOOL bouncesTop;
     
-}PassbookLayoutMetrics;
+    /// Allows the cells get "stuck" on the top, instead of just scrolling outside
+    BOOL sticksTop;
+    
+}PassbookLayoutEffects;
 
 @interface PassbookLayout : UICollectionViewLayout
 
 @property (nonatomic,assign) PassbookLayoutMetrics metrics;
-
-/// Resets to the default metrics
-- (void)useDefaultMetrics;
+@property (nonatomic,assign) PassbookLayoutEffects effects;
 
 @end
