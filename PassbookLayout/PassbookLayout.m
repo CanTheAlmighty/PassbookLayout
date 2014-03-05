@@ -8,6 +8,11 @@
 
 #import "PassbookLayout.h"
 
+@interface PassbookLayout ()
+{
+}
+@end
+
 @implementation PassbookLayout
 
 #pragma mark - Initialization
@@ -87,7 +92,7 @@
     }
     else
     {
-        BOOL isLast = (indexPath.item == [self.collectionView numberOfItemsInSection:indexPath.section]);
+        BOOL isLast = (indexPath.item == ([self.collectionView numberOfItemsInSection:indexPath.section]-1));
         attributes.frame  = frameForPassAtIndex(indexPath, isLast, self.collectionView.bounds, _metrics, _effects);
     }
     
@@ -99,20 +104,24 @@
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     // WIP : Returns all cells (inneficient) in the meantime. Just for testing
-    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[self.collectionView numberOfItemsInSection:0]];
+    NSRange range = rangeForVisibleCells(rect, [self.collectionView numberOfItemsInSection:0] , _metrics);
     
-    for (NSInteger i=0; i < [self.collectionView numberOfItemsInSection:0]; i++)
+    NSLog(@"Visible range: %@", NSStringFromRange(range));
+    
+    NSMutableArray *cells = [NSMutableArray arrayWithCapacity:range.length];
+    
+    for (NSUInteger index=0,item=range.location; item < (range.location + range.length); item++, index++)
     {
-        array[i] = [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
+        cells[index] = [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0]];
     }
     
-    return array;
+    return cells;
 }
 
 - (CGSize)collectionViewContentSize
 {
     // WIP : Fixed value in the meantime
-    return CGSizeMake(self.collectionView.bounds.size.width, 1000.0);
+    return collectionViewSize(self.collectionView.bounds, [self.collectionView numberOfItemsInSection:0], _metrics);
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
@@ -121,6 +130,28 @@
 }
 
 #pragma mark - Postioning
+
+#pragma mark Cell visibility
+
+NSRange rangeForVisibleCells(CGRect rect, NSInteger count, PassbookLayoutMetrics m)
+{
+    NSInteger min = floor(rect.origin.y                     / (m.collapsed.size.height - m.collapsed.overlap));
+    NSInteger max = ceil((rect.origin.y + rect.size.height) / (m.collapsed.size.height - m.collapsed.overlap));
+    
+    max = (max > count) ? count : max;
+    
+    min = (min < 0)     ? 0   : min;
+    min = (min < max)   ? min : max;
+    
+    NSRange r = NSMakeRange(min, max-min);
+    
+    return r;
+}
+
+CGSize collectionViewSize(CGRect bounds, NSInteger count, PassbookLayoutMetrics m)
+{
+    return CGSizeMake(bounds.size.width, count * (m.collapsed.size.height - m.collapsed.overlap));
+}
 
 #pragma mark Cell positioning
 
