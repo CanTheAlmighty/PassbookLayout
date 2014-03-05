@@ -3,7 +3,7 @@ PassbookLayout (iOS 6+)
 
 Mimicking the behaviour of the Passbooks apps in iOS using a custom UICollectionViewLayout.
 
-
+![Crappy gif ahoy!](images/demo.gif)
 
 ##Intended use
 This collection view is suitable for applications that want to mimick the behaviour of the included Apple Passbook on iOS devices (iOS 6 onwards).
