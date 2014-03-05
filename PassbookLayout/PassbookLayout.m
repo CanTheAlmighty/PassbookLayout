@@ -52,9 +52,9 @@
     m.collapsed.overlap = 32.0;
     
     m.bottomStackedHeight = 8.0;
-    m.bottomStackedTotalHeight = 64.0;
+    m.bottomStackedTotalHeight = 32.0;
     
-    e.inheritance       = 0.10;
+    e.inheritance       = 0.20;
     e.sticksTop         = YES;
     e.bouncesTop        = YES;
     
@@ -88,7 +88,7 @@
     }
     else if (selectedIndexPaths.count)
     {
-        attributes.frame  = frameForUnselectedPass(indexPath, self.collectionView.bounds, _metrics);
+        attributes.frame  = frameForUnselectedPass(indexPath, selectedIndexPaths[0], self.collectionView.bounds, _metrics);
     }
     else
     {
@@ -213,13 +213,15 @@ CGRect frameForSelectedPass(CGRect b, PassbookLayoutMetrics m)
 }
 
 /// Bottom-stack cell
-CGRect frameForUnselectedPass(NSIndexPath *indexPath, CGRect b, PassbookLayoutMetrics m)
+CGRect frameForUnselectedPass(NSIndexPath *indexPath, NSIndexPath *indexPathSelected, CGRect b, PassbookLayoutMetrics m)
 {
     CGRect f;
     
     f.size        = m.collapsed.size;
     f.origin.x    = (b.size.width - m.normal.size.width) / 2.0;
-    f.origin.y    = b.origin.y + b.size.height - m.bottomStackedTotalHeight + m.bottomStackedHeight*indexPath.item;
+    f.origin.y    = b.origin.y + b.size.height - m.bottomStackedTotalHeight + m.bottomStackedHeight*(indexPath.item - indexPathSelected.item);
+    
+    NSLog(@"%.2f", f.origin.y);
     
     return f;
 }
